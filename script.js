@@ -20,44 +20,62 @@ Check for invalid input (must be number between 1 and 3).
 Automatically end the program when the opponent health hits zero or all of the characters’ health has hit zero. Display a “win” or “lose” message.
 */
 var characters = [{
-name:"Luffy",
-health:400,
-},{
-name:"Zoro",
-health:350
-},{
-name:"Sanji",
-health:300,
+    name: "Luffy",
+    health: 400,
+}, {
+    name: "Zoro",
+    health: 350
+}, {
+    name: "Sanji",
+    health: 300,
 }]
 
 var opponent = {
-    name:"Garp",
+    name: "Garp",
     health: 755,
 }
 var Prompt = 9
-while(Prompt){
+
+console.log(`
+    Luffy's health is ${characters[0].health}
+    Zoro's health is ${characters[1].health}
+    Sanji's health is ${characters[2].health}
+    Garp's health is ${opponent.health}
+    `)
+
+while (Prompt) {
+ 
+
+
+    Prompt = prompt("Choose Your Fighter")
+
+    if (characters[0].health <=  0) {
+        console.log("You cannot use luffy because he has " + characters[0].health +  " health.")
+        opponent.health -= 0
+continue;
+    }
+     else if (Prompt == 0 && characters[0].health >= 0){
+        opponent.health -= 20
+
+    }
+        if (Prompt == 2) {
+        opponent.health -= 10
+
+    }
+     
+    if (Prompt == 1) {
+
+        opponent.health -= 15;
+
+    }
+    characters[Prompt].health -= 30;
+
     console.log(`
     Luffy's health is ${characters[0].health}
     Zoro's health is ${characters[1].health}
     Sanji's health is ${characters[2].health}
     Garp's health is ${opponent.health}
     `)
-    
-    
-     Prompt = prompt("Choose Your Fighter")
-     if(Prompt == 0){
-     opponent.health -=20
 
-     }
-     else if(Prompt == 2){
-        opponent.health -=10
-   
-        }
-       else if(Prompt == 1){
-      
-        opponent.health -= 15;
-       
-}
-       characters[Prompt].health -= 10;
-    
+
 }    
